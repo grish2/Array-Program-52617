@@ -1,0 +1,52 @@
+#include <stdlib.h>
+#include <stdio.h>
+#define pause system("pause");
+
+
+
+int main() {
+	int myScore[5] = { 0 }, opponentScore[5] = { 0 }, i = 0, win = 0, loss = 0, choice;
+
+	do {
+		printf("***********************************************\n");
+		printf("**                  MAIN   MENU              **\n");
+		printf("***********************************************\n");
+		printf("1. Enter game results\n");
+		printf("2. Current Record\n");
+		printf("3. Display all results from all games won\n");
+		printf("4. Display all results\n");
+		printf("0. Quit");
+		printf("\n\nPlease make a choice from the options above\n");
+		scanf_s("%i", &choice);
+		switch (choice) {
+		case 1:printf("Enter your team's score: \n");
+			scanf_s("%i", &myScore[5]);
+
+			printf("Enter your opponent's score: \n");
+			scanf_s("%i", &opponentScore[5]);
+
+			if (myScore > opponentScore) {
+				win += 1;
+			}
+			if (myScore < opponentScore) {
+				loss += 1;
+			}
+			system("cls");
+			break;
+		case 2:
+			printf("Your team has won %i times!", win);
+			printf("Your team has lost %i times!", loss);
+			break;
+		case 3:
+
+		case 4:
+			for (i = 0; i < 5; i++) {
+				printf("Results \n %i - %i\n", myScore[i], opponentScore[i]);
+			}
+			break;
+		}
+	} while (choice != 0);
+	pause;
+	return 0;
+}
+
