@@ -5,7 +5,7 @@
 
 
 int main() {
-	int myScore[5] = { 0 }, opponentScore[5] = { 0 }, i = 0, win = 0, loss = 0, choice;
+	int myScoreArray[1000] = { 0 }, opponentScoreArray[1000] = { 0 }, myScore, myScoreIndex = 0, opponentScore, opponentScoreIndex = 0, i = 0, win = 0, loss = 0, choose;
 
 	do {
 		printf("***********************************************\n");
@@ -17,36 +17,58 @@ int main() {
 		printf("4. Display all results\n");
 		printf("0. Quit");
 		printf("\n\nPlease make a choice from the options above\n");
-		scanf_s("%i", &choice);
-		switch (choice) {
+		scanf_s("%i", &choose);
+		switch (choose) {
 		case 1:printf("Enter your team's score: \n");
-			scanf_s("%i", &myScore[5]);
+			scanf_s("%i", &myScore);
+			myScoreArray[myScoreIndex] = myScore;
+			myScoreIndex++;
 
 			printf("Enter your opponent's score: \n");
-			scanf_s("%i", &opponentScore[5]);
+			scanf_s("%i", &opponentScore);
+			opponentScoreArray[opponentScoreIndex] = opponentScore;
+			opponentScoreIndex++;
 
 			if (myScore > opponentScore) {
-				win += 1;
+				win++;
 			}
 			if (myScore < opponentScore) {
-				loss += 1;
+				loss++;
 			}
 			system("cls");
 			break;
 		case 2:
-			printf("Your team has won %i times!", win);
-			printf("Your team has lost %i times!", loss);
+			printf("Your team has won %i times!\n", win);
+			printf("\nYour team has lost %i times!\n", loss);
 			break;
 		case 3:
+			printf("Our wins: \n");
 
-		case 4:
-			for (i = 0; i < 5; i++) {
-				printf("Results \n %i - %i\n", myScore[i], opponentScore[i]);
+			for (int d = 0; d < 1000; d++) {
+				if (myScore > opponentScore && myScoreArray[d] != 0) {
+					printf("\n Game Number: %i", d);
+					printf("\n Your Score: %i", myScoreArray[d]);
+					printf("\n Opponent's Score: %i", opponentScoreArray[d]);
+					printf("\n");
+				}
 			}
 			break;
+		case 4:
+			printf("Results:");
+
+			for (int v = 0; v < 1000; v++) {
+				if (myScoreArray[v] != 0) {
+					printf("\n Game Number: %i", v);
+					printf("\n Your Score: %i", myScoreArray[v]);
+					printf("\n Opponent's Score: %i", opponentScoreArray[v]);
+					printf("\n");
+				}
+			}
+			pause;
+
+			break;
 		}
-	} while (choice != 0);
+	} while (choose != 0);
 	pause;
 	return 0;
 }
-
